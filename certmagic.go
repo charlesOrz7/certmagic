@@ -95,7 +95,7 @@ func HTTPS(domainNames []string, mux http.Handler) error {
 
 		tlsConfig := cfg.TLSConfig()
 		tlsConfig.NextProtos = append([]string{"h2", "http/1.1"}, tlsConfig.NextProtos...)
-
+		log.Printf("tlsConfig%v,", tlsConfig)
 		httpsLn, err = tls.Listen("tcp", fmt.Sprintf(":%d", HTTPSPort), tlsConfig)
 		if err != nil {
 			httpLn.Close()
